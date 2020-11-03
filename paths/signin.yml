@@ -4,29 +4,29 @@ post:
   security:
     - BasicAuth: []
   parameters:
-    - $ref: "../components/parameters/traceSpan.yml"
+    - $ref: "#/components/parameters/TraceSpan"
   responses:
     "204":
       description: Successfully authenticated
-    "401":
-      description: Unauthorized access
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
+    # "401":
+    #   description: Unauthorized access
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: "#/components/schemas/Error"
             # $ref: "../components/schemas/error.yml"
-    "403":
-      description: user account is disabled
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/error.yml
-    default:
-      description: Unsuccessful authentication
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/error.yml
+    # "403":
+    #   description: user account is disabled
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: ../components/schemas/error.yml
+    # default:
+    #   description: Unsuccessful authentication
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: ../components/schemas/error.yml
 # components:
 #   parameters:
 #     TraceSpan:
