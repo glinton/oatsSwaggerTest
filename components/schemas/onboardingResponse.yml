@@ -1,0 +1,17 @@
+OnboardingResponse:
+  type: object
+  properties:
+    user:
+      $ref: ./user.yml
+    org:
+      $ref: ./organization.yml
+    bucket:
+      $ref: ./bucket.yml
+    auth:
+      $ref: ./authorization.yml
+PasswordResetBody:
+  properties:
+    password:
+      type: string
+  required:
+    - password

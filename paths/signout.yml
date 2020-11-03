@@ -1,0 +1,34 @@
+post:
+  operationId: PostSignout
+  summary: Expire the current session
+  parameters:
+    - $ref: "#/components/parameters/TraceSpan"
+  responses:
+    "204":
+      description: Session successfully expired
+    "401":
+      description: Unauthorized access
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/error.yml
+    default:
+      description: Unsuccessful session expiry
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/error.yml
+components:
+  parameters:
+    TraceSpan:
+      in: header
+      name: Zap-Trace-Span
+      description: OpenTracing span context
+      example:
+        trace_id: "1"
+        span_id: "1"
+        baggage:
+          key: value
+      required: false
+      schema:
+        type: string

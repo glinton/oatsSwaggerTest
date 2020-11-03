@@ -1,0 +1,4 @@
+Labels:
+  type: array
+  items:
+    $ref: ./label.yml

@@ -1,0 +1,43 @@
+post:
+  operationId: PostSignin
+  summary: Exchange basic auth credentials for session
+  security:
+    - BasicAuth: []
+  parameters:
+    - $ref: "../components/parameters/traceSpan.yml"
+  responses:
+    "204":
+      description: Successfully authenticated
+    "401":
+      description: Unauthorized access
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+            # $ref: "../components/schemas/error.yml"
+    "403":
+      description: user account is disabled
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/error.yml
+    default:
+      description: Unsuccessful authentication
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/error.yml
+# components:
+#   parameters:
+#     TraceSpan:
+#       in: header
+#       name: Zap-Trace-Span
+#       description: OpenTracing span context
+#       example:
+#         trace_id: "1"
+#         span_id: "1"
+#         baggage:
+#           key: value
+#       required: false
+#       schema:
+#         type: string
